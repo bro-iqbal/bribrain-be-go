@@ -1,17 +1,12 @@
-CREATE TABLE
-IF NOT EXISTS `users`
-(
-    `id` INT (11) NOT NULL,
-    `name` VARCHAR (255) NOT NULL,
-    `input_status` ENUM ('Sudah Input', 'Belum Input') NOT NULL,
-    `status` ENUM ('active', 'not-active', 'deleted') NOT NULL DEFAULT 'active',
-    `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` datetime,
-    `deleted_at` datetime
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `input_status_kunjungan` enum('Sudah Input','Belum Input') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `input_status_rka` enum('Sudah Input','Belum Input') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` enum('active','not-active','deleted') NOT NULL DEFAULT 'active',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
